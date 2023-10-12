@@ -33,10 +33,12 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
         this.commandFactory = commandFactory;
         this.paramsFactory = paramsFactory;
         List<BotCommand> menuCommands = createMenuCommands(commandFactory.getAllMenuCommands());
-        try {
-            execute(new SetMyCommands(menuCommands, new BotCommandScopeDefault(), null));
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+        if (menuCommands != null && !menuCommands.isEmpty()) {
+            try {
+                execute(new SetMyCommands(menuCommands, new BotCommandScopeDefault(), null));
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

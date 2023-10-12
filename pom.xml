@@ -12,8 +12,29 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <log4j.version>2.20.0</log4j.version>
-    <github.global.server>github</github.global.server>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo1.maven.org/maven2</url>
+    </repository>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/maximaa2001/simple-telegram-bot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>maximaa2001</name>
+      <url>https://maven.pkg.github.com/maximaa2001/simple-telegram-bot</url>
+    </repository>
+  </distributionManagement>
 
 
   <dependencies>
@@ -80,38 +101,6 @@
             </path>
           </annotationProcessorPaths>
         </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.7</version>
-      </plugin>
-      <plugin>
-        <groupId>com.github.github</groupId>
-        <artifactId>site-maven-plugin</artifactId>
-        <version>0.12</version>
-        <configuration>
-          <message>test version</message>
-          <noJekyll>true</noJekyll>
-          <outputDirectory>${project.build.directory}</outputDirectory>
-          <includes><include>**/*</include></includes>
-          <repositoryName>simple-telegram-bot</repositoryName>
-          <repositoryOwner>maximaa2001</repositoryOwner>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>site</goal>
-            </goals>
-            <phase>site</phase>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.0.0</version>
       </plugin>
     </plugins>
   </build>

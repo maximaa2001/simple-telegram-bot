@@ -13,11 +13,13 @@ public class CommandFactory {
     private final Map<String, Command> commands = new HashMap<>();
 
     public CommandFactory(List<Command> commandsList) {
-        for (Command command : commandsList) {
-            if (command instanceof AbstractCallbackMessageCommand abstractCallbackMessageCommand) {
-                abstractCallbackMessageCommand.getNames().forEach(e -> commands.put(e, command));
-            } else {
-                commands.put(command.getName(), command);
+        if (commandsList != null) {
+            for (Command command : commandsList) {
+                if (command instanceof AbstractCallbackMessageCommand abstractCallbackMessageCommand) {
+                    abstractCallbackMessageCommand.getNames().forEach(e -> commands.put(e, command));
+                } else {
+                    commands.put(command.getName(), command);
+                }
             }
         }
     }
