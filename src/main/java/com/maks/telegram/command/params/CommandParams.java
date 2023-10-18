@@ -8,7 +8,7 @@ import java.util.Map;
 
 public abstract class CommandParams {
     public static final String CHAT_ID = "CHAT_ID";
-    protected final Map<String, String> params = new HashMap<>();
+    protected final Map<String, Object> params = new HashMap<>();
     @Getter
     protected final String invokedCommand;
     @Getter
@@ -20,8 +20,9 @@ public abstract class CommandParams {
         initParams(update);
     }
 
-    public String getParam(String name) {
-        return params.get(name);
+    @SuppressWarnings("unchecked")
+    public <T> T getParam(String name, Class<T> clazz) {
+        return (T) params.get(name);
     }
 
     public void setDynamicData(String dynamicData) {

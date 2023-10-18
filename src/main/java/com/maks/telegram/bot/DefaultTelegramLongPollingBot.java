@@ -12,6 +12,7 @@ import com.maks.telegram.meta.Sender;
 import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
@@ -42,6 +43,7 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
         }
     }
 
+    //todo check returned messages
     @Override
     public void onUpdateReceived(Update update) {
         try {
@@ -53,13 +55,22 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
             if (command != null) {
                 log.debug("command {}", command.getClass());
                 UserResponse userResponse = command.execute(params);
-                if (userResponse.getDeleteMessage() != null) {
-                    sendMessage(() -> execute(userResponse.getDeleteMessage()));
-                }
                 switch (userResponse.getType()) {
                     case SEND_MESSAGE -> sendMessage(() -> execute(userResponse.getSendMessage()));
                     case EDIT_MESSAGE_TEXT -> sendMessage(() -> execute(userResponse.getEditMessageText()));
                     case SEND_PHOTO -> sendMessage(() -> execute(userResponse.getSendPhoto()));
+                    case SEND_VIDEO -> sendMessage(() -> execute(userResponse.getSendVideo()));
+                    case SEND_AUDIO -> sendMessage(() -> execute(userResponse.getSendAudio()));
+                    case SEND_STICKER -> sendMessage(() -> execute(userResponse.getSendSticker()));
+                    case SEND_VOICE -> sendMessage(() -> execute(userResponse.getSendVoice()));
+                    case SEND_ANIMATION -> sendMessage(() -> execute(userResponse.getSendAnimation()));
+                    case SEND_DOCUMENT -> sendMessage(() -> execute(userResponse.getSendDocument()));
+                    case SEND_VIDEO_NOTE -> sendMessage(() -> execute(userResponse.getSendVideoNote()));
+                    case SEND_CONTACT -> sendMessage(() -> execute(userResponse.getSendContact()));
+                    case SEND_DICE -> sendMessage(() -> {
+                        Message execute = execute(userResponse.getSendDice());
+                        System.out.println();
+                    });
                     case EDIT_MESSAGE_MEDIA -> sendMessage(() -> execute(userResponse.getEditMessageMedia()));
                     default -> log.warn("type {}", userResponse.getType());
                 }
