@@ -1,6 +1,7 @@
 package com.maks.telegram.command.response.user;
 
 import lombok.Getter;
+import org.telegram.telegrambots.meta.api.methods.polls.SendPoll;
 import org.telegram.telegrambots.meta.api.methods.send.*;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageMedia;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
@@ -21,6 +22,8 @@ public class UserResponse {
     private SendDocument sendDocument;
     private SendContact sendContact;
     private SendDice sendDice;
+    private SendPoll sendPoll;
+    private SendLocation sendLocation;
     private EditMessageMedia editMessageMedia;
     private final UserResponseType type;
 
@@ -77,6 +80,16 @@ public class UserResponse {
     public UserResponse(SendDice sendDice) {
         this(SEND_DICE);
         this.sendDice = sendDice;
+    }
+
+    public UserResponse(SendPoll sendPoll) {
+        this(SEND_POLL);
+        this.sendPoll = sendPoll;
+    }
+
+    public UserResponse(SendLocation sendLocation) {
+        this(SEND_LOCATION);
+        this.sendLocation = sendLocation;
     }
 
     public UserResponse(SendAudio sendAudio) {

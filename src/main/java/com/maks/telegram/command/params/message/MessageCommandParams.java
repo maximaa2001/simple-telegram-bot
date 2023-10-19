@@ -7,9 +7,10 @@ import org.telegram.telegrambots.meta.api.objects.User;
 
 public class MessageCommandParams extends CommandParams {
     public static final String MESSAGE_ID = "MESSAGE_ID";
-    public static final String FIRST_NAME = "FIRST_NAME";
-    public static final String LAST_NAME = "LAST_NAME";
-    public static final String USERNAME = "USERNAME";
+    public static final String DATE = "DATE";
+    public static final String FROM_FIRST_NAME = "FROM_FIRST_NAME";
+    public static final String FROM_LAST_NAME = "FROM_LAST_NAME";
+    public static final String FROM_USERNAME = "USERNAME";
 
     public MessageCommandParams(Update update) {
         super(update);
@@ -21,13 +22,21 @@ public class MessageCommandParams extends CommandParams {
         User from = update.getMessage().getFrom();
         params.put(CHAT_ID, message.getChatId());
         params.put(MESSAGE_ID, message.getMessageId());
-        params.put(FIRST_NAME, from.getFirstName());
-        params.put(LAST_NAME, from.getLastName());
-        params.put(USERNAME, from.getUserName());
+        params.put(DATE, message.getDate());
+        params.put(FROM_FIRST_NAME, from.getFirstName());
+        params.put(FROM_LAST_NAME, from.getLastName());
+        params.put(FROM_USERNAME, from.getUserName());
     }
 
     @Override
     protected String getInvokedCommandName(Update update) {
         return update.getMessage().getText();
+    }
+
+    protected void resolveForwardMessage(Message message) {
+        User forwardFrom = message.getForwardFrom();
+        if(forwardFrom != null) {
+
+        }
     }
 }

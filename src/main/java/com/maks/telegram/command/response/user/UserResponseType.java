@@ -13,5 +13,7 @@ public enum UserResponseType {
     SEND_DOCUMENT,
     SEND_CONTACT,
     SEND_DICE,
+    SEND_POLL,
+    SEND_LOCATION,
     EDIT_MESSAGE_MEDIA;
 }

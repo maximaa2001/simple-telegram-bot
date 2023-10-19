@@ -32,6 +32,10 @@ public class ParamsFactory {
                 return new ContactCommandParams(update);
             } else if (message.getDice() != null) {
                 return new DiceCommandParams(update);
+            } else if (message.getPoll() != null) {
+                return new PollCommandParams(update);
+            } else if (message.getLocation() != null) {
+                return new LocationCommandParams(update);
             } else if (message.getText() != null) {
                 return new MessageCommandParams(update);
             }
