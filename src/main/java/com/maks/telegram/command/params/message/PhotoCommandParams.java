@@ -3,8 +3,11 @@ package com.maks.telegram.command.params.message;
 import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import java.util.List;
+
 public class PhotoCommandParams extends MediaCommandParams {
     private final static String SEND_PHOTO = "SEND_PHOTO";
+    public final static String PHOTO = "PHOTO";
 
 
     public PhotoCommandParams(Update update) {
@@ -14,10 +17,8 @@ public class PhotoCommandParams extends MediaCommandParams {
     @Override
     protected void initParams(Update update) {
         super.initParams(update);
-        PhotoSize photoSize = update.getMessage().getPhoto().get(0);
-        params.put(FILE_ID, photoSize.getFileId());
-        params.put(FILE_SIZE, photoSize.getFileSize());
-        params.put(CAPTION, update.getMessage().getCaption());
+        List<PhotoSize> photos = update.getMessage().getPhoto();
+        params.put(PHOTO, photos.get(0));
     }
 
     @Override

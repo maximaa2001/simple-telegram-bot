@@ -5,6 +5,7 @@ import org.telegram.telegrambots.meta.api.objects.Video;
 
 public class VideoCommandParams extends MediaCommandParams {
     private final static String SEND_VIDEO = "SEND_VIDEO";
+    public final static String VIDEO = "VIDEO";
 
     public VideoCommandParams(Update update) {
         super(update);
@@ -14,12 +15,7 @@ public class VideoCommandParams extends MediaCommandParams {
     protected void initParams(Update update) {
         super.initParams(update);
         Video video = update.getMessage().getVideo();
-        params.put(FILE_ID, video.getFileId());
-        params.put(DURATION, video.getDuration());
-        params.put(FILE_NAME, video.getFileName());
-        params.put(MIME_TYPE, video.getMimeType());
-        params.put(FILE_SIZE, video.getFileSize());
-        params.put(CAPTION, update.getMessage().getCaption());
+        params.put(VIDEO, video);
     }
 
     @Override

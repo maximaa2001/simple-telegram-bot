@@ -5,7 +5,7 @@ import org.telegram.telegrambots.meta.api.objects.VideoNote;
 
 public class VideoNoteCommandParams extends MediaCommandParams {
     private final static String SEND_VIDEO_NOTE = "SEND_VIDEO_NOTE";
-    public static final String LENGTH = "LENGTH";
+    public static final String VIDEO_NOTE = "VIDEO_NOTE";
 
     public VideoNoteCommandParams(Update update) {
         super(update);
@@ -15,10 +15,7 @@ public class VideoNoteCommandParams extends MediaCommandParams {
     protected void initParams(Update update) {
         super.initParams(update);
         VideoNote videoNote = update.getMessage().getVideoNote();
-        params.put(FILE_ID, videoNote.getFileId());
-        params.put(LENGTH, videoNote.getLength());
-        params.put(DURATION, videoNote.getDuration());
-        params.put(FILE_SIZE, videoNote.getFileSize());
+        params.put(VIDEO_NOTE, videoNote);
     }
 
     @Override

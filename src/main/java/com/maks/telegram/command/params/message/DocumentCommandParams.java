@@ -5,6 +5,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class DocumentCommandParams extends MediaCommandParams {
     private final static String SEND_DOCUMENT = "SEND_DOCUMENT";
+    public final static String DOCUMENT = "DOCUMENT";
 
     public DocumentCommandParams(Update update) {
         super(update);
@@ -14,11 +15,7 @@ public class DocumentCommandParams extends MediaCommandParams {
     protected void initParams(Update update) {
         super.initParams(update);
         Document document = update.getMessage().getDocument();
-        params.put(FILE_ID, document.getFileId());
-        params.put(FILE_NAME, document.getFileName());
-        params.put(MIME_TYPE, document.getMimeType());
-        params.put(FILE_SIZE, document.getFileSize());
-        params.put(CAPTION, update.getMessage().getCaption());
+        params.put(DOCUMENT, document);
     }
 
     @Override

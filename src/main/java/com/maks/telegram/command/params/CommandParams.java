@@ -1,5 +1,6 @@
 package com.maks.telegram.command.params;
 
+import com.maks.telegram.command.params.callback_query.CallbackQueryCommandParams;
 import lombok.Getter;
 import org.telegram.telegrambots.meta.api.objects.Update;
 

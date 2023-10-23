@@ -2,6 +2,7 @@ package com.maks.telegram.command.response.command.edit;
 
 import com.maks.telegram.command.ReturnInlineKeyboard;
 import com.maks.telegram.meta.CallbackNameValidator;
+import com.maks.telegram.util.StringUtils;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageMedia;
 import org.telegram.telegrambots.meta.api.objects.media.InputMedia;
 
@@ -30,9 +31,25 @@ public abstract class EditMediaCommandResponse extends EditCommandResponse imple
                 .chatId(chatId)
                 .messageId(messageId)
                 .replyMarkup((returnInlineKeyboard != null) ? returnInlineKeyboard.getNextKeyboard(chatId) : null)
-                .media(createInputMedia())
+                .media(resolverMedia())
                 .build();
     }
 
-    abstract protected InputMedia createInputMedia();
+    private InputMedia resolverMedia() {
+        String media = null;
+        File mediaFile = null;
+        String mediaName = null;
+        boolean isNewMedia = false;
+        if (identifier != null) {
+            media = identifier;
+        } else {
+            media = StringUtils.createString("attach://", file.getName());
+            mediaFile = file;
+            mediaName = file.getName();
+            isNewMedia = true;
+        }
+        return createInputMedia(media, mediaFile, mediaName, isNewMedia);
+    }
+
+    abstract protected InputMedia createInputMedia(String media, File mediaFile, String mediaName, boolean isNewMedia);
 }

@@ -20,19 +20,7 @@ public class EditPhotoCommandResponse extends EditMediaCommandResponse {
     }
 
     @Override
-    protected InputMedia createInputMedia() {
-        String media = null;
-        File mediaFile = null;
-        String mediaName = null;
-        boolean isNewMedia = false;
-        if (identifier != null) {
-            media = identifier;
-        } else {
-            media = StringUtils.createString("attach://", file.getName());
-            mediaFile = file;
-            mediaName = file.getName();
-            isNewMedia = true;
-        }
+    protected InputMedia createInputMedia(String media, File mediaFile, String mediaName, boolean isNewMedia) {
         return InputMediaPhoto.builder()
                 .media(media)
                 .newMediaFile(mediaFile)

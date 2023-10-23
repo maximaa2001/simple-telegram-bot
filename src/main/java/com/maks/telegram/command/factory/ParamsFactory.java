@@ -1,7 +1,8 @@
 package com.maks.telegram.command.factory;
 
-import com.maks.telegram.command.params.CallbackQueryCommandParams;
+import com.maks.telegram.command.params.callback_query.CallbackQueryCommandParams;
 import com.maks.telegram.command.params.CommandParams;
+import com.maks.telegram.command.params.edited_message.*;
 import com.maks.telegram.command.params.message.*;
 import com.maks.telegram.exception.UnknownParamsException;
 import com.maks.telegram.util.StringUtils;
@@ -38,6 +39,21 @@ public class ParamsFactory {
                 return new LocationCommandParams(update);
             } else if (message.getText() != null) {
                 return new MessageCommandParams(update);
+            }
+        } else if (update.hasEditedMessage()) {
+            Message editedMessage = update.getEditedMessage();
+            if (editedMessage.getText() != null) {
+                return new EditMessageCommandParams(update);
+            } else if (editedMessage.getAnimation() != null) {
+                return new EditAnimationCommandParams(update);
+            } else if (editedMessage.getDocument() != null) {
+                return new EditDocumentCommandParams(update);
+            } else if (editedMessage.getAudio() != null) {
+                return new EditAudioCommandParams(update);
+            } else if (editedMessage.getPhoto() != null) {
+                return new EditPhotoCommandParams(update);
+            } else if (editedMessage.getVideo() != null) {
+                return new EditVideoCommandParams(update);
             }
         } else if (update.hasCallbackQuery()) {
             return new CallbackQueryCommandParams(update);

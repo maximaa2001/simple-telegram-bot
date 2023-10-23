@@ -2,18 +2,15 @@ package com.maks.telegram.command.response.command.edit;
 
 import com.maks.telegram.command.ReturnInlineKeyboard;
 import com.maks.telegram.command.response.user.UserResponse;
+import com.maks.telegram.util.StringUtils;
 import org.telegram.telegrambots.meta.api.objects.media.InputMedia;
-import org.telegram.telegrambots.meta.api.objects.media.InputMediaVideo;
+import org.telegram.telegrambots.meta.api.objects.media.InputMediaDocument;
 
 import java.io.File;
 
-public class EditVideoCommandResponse extends EditMediaCommandResponse {
-    private final Integer duration;
-
-    public EditVideoCommandResponse(Long chatId, Integer messageId, String identifier, File file,
-                                    String caption, ReturnInlineKeyboard returnInlineKeyboard, Integer duration) {
+public class EditDocumentCommandResponse extends EditMediaCommandResponse {
+    public EditDocumentCommandResponse(Long chatId, Integer messageId, String identifier, File file, String caption, ReturnInlineKeyboard returnInlineKeyboard) {
         super(chatId, messageId, identifier, file, caption, returnInlineKeyboard);
-        this.duration = duration;
     }
 
     @Override
@@ -23,54 +20,47 @@ public class EditVideoCommandResponse extends EditMediaCommandResponse {
 
     @Override
     protected InputMedia createInputMedia(String media, File mediaFile, String mediaName, boolean isNewMedia) {
-        return InputMediaVideo.builder()
+        return InputMediaDocument.builder()
                 .media(media)
                 .newMediaFile(mediaFile)
                 .mediaName(mediaName)
                 .isNewMedia(isNewMedia)
                 .caption(caption)
-                .duration(duration)
                 .build();
     }
 
-    public static class EditVideoCommandResponseBuilder {
+    public static class EditDocumentCommandResponseBuilder {
         private final Long chatId;
         private final Integer messageId;
         private String identifier;
         private File file;
         private String caption;
-        private Integer duration;
         private ReturnInlineKeyboard returnInlineKeyboard;
 
-        public EditVideoCommandResponseBuilder(Long chatId, Integer messageId, String identifier) {
+        public EditDocumentCommandResponseBuilder(Long chatId, Integer messageId, String identifier) {
             this.chatId = chatId;
             this.messageId = messageId;
             this.identifier = identifier;
         }
 
-        public EditVideoCommandResponseBuilder(Long chatId, Integer messageId, File file) {
+        public EditDocumentCommandResponseBuilder(Long chatId, Integer messageId, File file) {
             this.chatId = chatId;
             this.messageId = messageId;
             this.file = file;
         }
 
-        public EditVideoCommandResponseBuilder caption(String caption) {
+        public EditDocumentCommandResponseBuilder caption(String caption) {
             this.caption = caption;
             return this;
         }
 
-        public EditVideoCommandResponseBuilder returnInlineKeyboard(ReturnInlineKeyboard returnInlineKeyboard) {
+        public EditDocumentCommandResponseBuilder returnInlineKeyboard(ReturnInlineKeyboard returnInlineKeyboard) {
             this.returnInlineKeyboard = returnInlineKeyboard;
             return this;
         }
 
-        public EditVideoCommandResponseBuilder duration(Integer duration) {
-            this.duration = duration;
-            return this;
-        }
-
-        public EditVideoCommandResponse build() {
-            return new EditVideoCommandResponse(chatId, messageId, identifier, file, caption, returnInlineKeyboard, duration);
+        public EditDocumentCommandResponse build() {
+            return new EditDocumentCommandResponse(chatId, messageId, identifier, file, caption, returnInlineKeyboard);
         }
     }
 }

@@ -5,6 +5,7 @@ import org.telegram.telegrambots.meta.api.objects.Voice;
 
 public class VoiceCommandParams extends MediaCommandParams {
     private final static String SEND_VOICE = "SEND_VOICE";
+    public final static String VOICE = "VOICE";
 
 
     public VoiceCommandParams(Update update) {
@@ -15,11 +16,7 @@ public class VoiceCommandParams extends MediaCommandParams {
     protected void initParams(Update update) {
         super.initParams(update);
         Voice voice = update.getMessage().getVoice();
-        params.put(FILE_ID, voice.getFileId());
-        params.put(DURATION, voice.getDuration());
-        params.put(MIME_TYPE, voice.getMimeType());
-        params.put(FILE_SIZE, voice.getFileSize());
-        params.put(CAPTION, update.getMessage().getCaption());
+        params.put(VOICE, voice);
     }
 
     @Override
