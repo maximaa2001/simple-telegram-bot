@@ -4,7 +4,6 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class EditMediaCommandParams extends EditCommandParams {
-    public static final String CAPTION = "CAPTION";
 
     public EditMediaCommandParams(Update update) {
         super(update);

@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.stickers.Sticker;
 
 public class StickerCommandParams extends MediaCommandParams {
-    private final static String SEND_STICKER = "SEND_STICKER";
-    public final static String STICKER = "STICKER";
-
     public StickerCommandParams(Update update) {
         super(update);
     }
@@ -20,6 +18,6 @@ public class StickerCommandParams extends MediaCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_STICKER;
+        return CommandConstant.GET_STICKER;
     }
 }

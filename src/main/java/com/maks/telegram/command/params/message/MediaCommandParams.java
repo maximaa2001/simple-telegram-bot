@@ -4,8 +4,6 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public abstract class MediaCommandParams extends MessageCommandParams {
-    public static final String CAPTION = "CAPTION";
-
     public MediaCommandParams(Update update) {
         super(update);
     }

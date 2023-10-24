@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.Voice;
 
 public class VoiceCommandParams extends MediaCommandParams {
-    private final static String SEND_VOICE = "SEND_VOICE";
-    public final static String VOICE = "VOICE";
-
 
     public VoiceCommandParams(Update update) {
         super(update);
@@ -21,6 +19,6 @@ public class VoiceCommandParams extends MediaCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_VOICE;
+        return CommandConstant.GET_VOICE;
     }
 }

@@ -5,7 +5,6 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public abstract class EditCommandParams extends MessageCommandParams {
-    public static final String EDIT_DATE = "EDIT_DATE";
 
     public EditCommandParams(Update update) {
         super(update);

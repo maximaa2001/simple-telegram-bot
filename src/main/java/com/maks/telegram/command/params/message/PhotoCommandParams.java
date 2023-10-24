@@ -1,14 +1,12 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.List;
 
 public class PhotoCommandParams extends MediaCommandParams {
-    private final static String SEND_PHOTO = "SEND_PHOTO";
-    public final static String PHOTO = "PHOTO";
-
 
     public PhotoCommandParams(Update update) {
         super(update);
@@ -23,6 +21,6 @@ public class PhotoCommandParams extends MediaCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_PHOTO;
+        return CommandConstant.GET_PHOTO;
     }
 }

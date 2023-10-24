@@ -42,7 +42,6 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
         }
     }
 
-    //todo check returned messages
     @Override
     public void onUpdateReceived(Update update) {
         try {

@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Contact;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class ContactCommandParams extends MessageCommandParams {
-    private static final String SEND_CONTACT = "SEND_CONTACT";
-    public static final String CONTACT = "CONTACT";
-
     public ContactCommandParams(Update update) {
         super(update);
     }
@@ -21,6 +19,6 @@ public class ContactCommandParams extends MessageCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_CONTACT;
+        return CommandConstant.GET_CONTACT;
     }
 }

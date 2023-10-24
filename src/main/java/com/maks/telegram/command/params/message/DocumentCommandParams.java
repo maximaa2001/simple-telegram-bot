@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class DocumentCommandParams extends MediaCommandParams {
-    private final static String SEND_DOCUMENT = "SEND_DOCUMENT";
-    public final static String DOCUMENT = "DOCUMENT";
-
     public DocumentCommandParams(Update update) {
         super(update);
     }
@@ -20,6 +18,6 @@ public class DocumentCommandParams extends MediaCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_DOCUMENT;
+        return CommandConstant.GET_DOCUMENT;
     }
 }

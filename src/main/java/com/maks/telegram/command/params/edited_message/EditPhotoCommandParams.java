@@ -1,12 +1,9 @@
 package com.maks.telegram.command.params.edited_message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class EditPhotoCommandParams extends EditMediaCommandParams {
-
-    private final static String EDIT_PHOTO = "EDIT_PHOTO";
-    public static final String NEW_PHOTO = "NEW_PHOTO";
-
     public EditPhotoCommandParams(Update update) {
         super(update);
     }
@@ -19,6 +16,6 @@ public class EditPhotoCommandParams extends EditMediaCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return EDIT_PHOTO;
+        return CommandConstant.EDIT_PHOTO;
     }
 }

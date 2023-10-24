@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.Video;
 
 public class VideoCommandParams extends MediaCommandParams {
-    private final static String SEND_VIDEO = "SEND_VIDEO";
-    public final static String VIDEO = "VIDEO";
-
     public VideoCommandParams(Update update) {
         super(update);
     }
@@ -20,6 +18,6 @@ public class VideoCommandParams extends MediaCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_VIDEO;
+        return CommandConstant.GET_VIDEO;
     }
 }

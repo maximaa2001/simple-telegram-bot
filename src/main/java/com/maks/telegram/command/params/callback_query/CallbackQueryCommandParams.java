@@ -5,11 +5,6 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class CallbackQueryCommandParams extends CommandParams {
-    public static final String FROM_USER = "FROM_USER";
-    public static final String MESSAGE_ID = "MESSAGE_ID";
-    public static final String CALLBACK_DATA = "CALLBACK_DATA";
-    public static final String DYNAMIC_DATA = "DYNAMIC_DATA";
-
     public CallbackQueryCommandParams(Update update) {
         super(update);
     }

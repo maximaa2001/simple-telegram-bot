@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Location;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class LocationCommandParams extends MessageCommandParams {
-    private static final String SEND_LOCATION = "SEND_LOCATION";
-    public static final String LOCATION = "LOCATION";
-
     public LocationCommandParams(Update update) {
         super(update);
     }
@@ -20,6 +18,6 @@ public class LocationCommandParams extends MessageCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_LOCATION;
+        return CommandConstant.GET_LOCATION;
     }
 }

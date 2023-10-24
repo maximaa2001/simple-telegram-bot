@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Dice;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class DiceCommandParams extends MessageCommandParams {
-    private static final String SEND_DICE = "SEND_DICE";
-    public static final String DICE = "DICE";
-
     public DiceCommandParams(Update update) {
         super(update);
     }
@@ -19,6 +17,6 @@ public class DiceCommandParams extends MessageCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_DICE;
+        return CommandConstant.GET_DICE;
     }
 }

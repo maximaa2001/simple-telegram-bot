@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.VideoNote;
 
 public class VideoNoteCommandParams extends MediaCommandParams {
-    private final static String SEND_VIDEO_NOTE = "SEND_VIDEO_NOTE";
-    public static final String VIDEO_NOTE = "VIDEO_NOTE";
-
     public VideoNoteCommandParams(Update update) {
         super(update);
     }
@@ -20,6 +18,6 @@ public class VideoNoteCommandParams extends MediaCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_VIDEO_NOTE;
+        return CommandConstant.GET_VIDEO_NOTE;
     }
 }

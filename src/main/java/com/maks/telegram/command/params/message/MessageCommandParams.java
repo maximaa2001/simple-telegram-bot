@@ -5,14 +5,6 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 public class MessageCommandParams extends CommandParams {
-    public static final String MESSAGE_ID = "MESSAGE_ID";
-    public static final String MESSAGE_DATE = "MESSAGE_DATE";
-    public static final String FROM_USER = "FROM_USER";
-    public static final String FORWARD_DATE = "FORWARD_DATE";
-    public static final String FORWARD_FROM_USER = "FORWARD_FROM_USER";
-    public static final String FORWARD_FROM_CHAT = "FORWARD_FROM_CHAT";
-    public static final String FORWARD_FROM_MESSAGE_ID = "FORWARD_FROM_MESSAGE_ID";
-
 
     public MessageCommandParams(Update update) {
         super(update);

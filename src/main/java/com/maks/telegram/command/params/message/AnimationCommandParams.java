@@ -1,12 +1,10 @@
 package com.maks.telegram.command.params.message;
 
+import com.maks.telegram.command.constant.CommandConstant;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.games.Animation;
 
 public class AnimationCommandParams extends MediaCommandParams {
-    private final static String SEND_ANIMATION = "SEND_ANIMATION";
-    public final static String ANIMATION = "ANIMATION";
-
     public AnimationCommandParams(Update update) {
         super(update);
     }
@@ -20,7 +18,7 @@ public class AnimationCommandParams extends MediaCommandParams {
 
     @Override
     protected String getInvokedCommandName(Update update) {
-        return SEND_ANIMATION;
+        return CommandConstant.GET_ANIMATION;
     }
 
 }
