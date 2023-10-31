@@ -3,8 +3,8 @@ package com.maks.telegram.bot;
 import com.maks.telegram.command.AbstractMenuCommand;
 import com.maks.telegram.command.Command;
 import com.maks.telegram.command.DynamicCommand;
-import com.maks.telegram.command.factory.CommandFactory;
-import com.maks.telegram.command.factory.ParamsFactory;
+import com.maks.telegram.command.factory.DefaultCommandFactory;
+import com.maks.telegram.command.factory.DefaultParamsFactory;
 import com.maks.telegram.command.params.CommandParams;
 import com.maks.telegram.command.response.user.UserResponse;
 import com.maks.telegram.exception.UnknownParamsException;
@@ -23,11 +23,11 @@ import java.util.List;
 @Slf4j
 public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
     private final String username;
-    private final CommandFactory commandFactory;
-    private final ParamsFactory paramsFactory;
+    private final DefaultCommandFactory commandFactory;
+    private final DefaultParamsFactory paramsFactory;
 
-    public DefaultTelegramLongPollingBot(String username, String token, CommandFactory commandFactory,
-                                         ParamsFactory paramsFactory) {
+    public DefaultTelegramLongPollingBot(String username, String token, DefaultCommandFactory commandFactory,
+                                         DefaultParamsFactory paramsFactory) {
         super(token);
         this.username = username;
         this.commandFactory = commandFactory;
