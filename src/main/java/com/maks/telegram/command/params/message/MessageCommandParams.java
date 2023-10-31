@@ -14,6 +14,7 @@ public class MessageCommandParams extends CommandParams {
     protected void initParams(Update update) {
         Message message = update.getMessage();
         params.put(CHAT_ID, message.getChatId());
+        params.put(CHAT, message.getChat());
         params.put(MESSAGE_ID, message.getMessageId());
         params.put(MESSAGE_DATE, message.getDate());
         params.put(FROM_USER, message.getFrom());

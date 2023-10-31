@@ -4,6 +4,7 @@ import com.maks.telegram.command.params.callback_query.CallbackQueryCommandParam
 import com.maks.telegram.command.params.CommandParams;
 import com.maks.telegram.command.params.edited_message.*;
 import com.maks.telegram.command.params.message.*;
+import com.maks.telegram.command.params.my_chat_member.MyChatMemberCommandParams;
 import com.maks.telegram.exception.UnknownParamsException;
 import com.maks.telegram.util.StringUtils;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -57,6 +58,8 @@ public class DefaultParamsFactory implements ParamsFactory {
             }
         } else if (update.hasCallbackQuery()) {
             return new CallbackQueryCommandParams(update);
+        } else if (update.hasMyChatMember()) {
+            return new MyChatMemberCommandParams(update);
         }
         throw new UnknownParamsException(StringUtils.createString("Unknown params ", update.toString()));
     }

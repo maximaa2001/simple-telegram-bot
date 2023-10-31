@@ -9,6 +9,7 @@ import java.util.Map;
 
 public abstract class CommandParams {
     public static final String CHAT_ID = "CHAT_ID";
+    public static final String CHAT = "CHAT";
     public static final String MESSAGE_ID = "MESSAGE_ID";
     public static final String MESSAGE_DATE = "MESSAGE_DATE";
     public static final String FROM_USER = "FROM_USER";
@@ -38,6 +39,10 @@ public abstract class CommandParams {
     public static final String NEW_VIDEO = "NEW_VIDEO";
     public static final String CALLBACK_DATA = "CALLBACK_DATA";
     public static final String DYNAMIC_DATA = "DYNAMIC_DATA";
+    public static final String OLD_CHAT_MEMBER = "OLD_CHAT_MEMBER";
+    public static final String NEW_CHAT_MEMBER = "NEW_CHAT_MEMBER";
+    public static final String DATE = "DATE";
+    public static final String INVITE_LINK = "INVITE_LINK";
 
 
     protected final Map<String, Object> params = new HashMap<>();

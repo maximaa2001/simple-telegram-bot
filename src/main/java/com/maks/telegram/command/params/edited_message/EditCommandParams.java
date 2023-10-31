@@ -14,6 +14,7 @@ public abstract class EditCommandParams extends MessageCommandParams {
     protected void initParams(Update update) {
         Message editedMessage = update.getEditedMessage();
         params.put(CHAT_ID, editedMessage.getChatId());
+        params.put(CHAT, editedMessage.getChat());
         params.put(MESSAGE_ID, editedMessage.getMessageId());
         params.put(MESSAGE_DATE, editedMessage.getDate());
         params.put(FROM_USER, editedMessage.getFrom());
