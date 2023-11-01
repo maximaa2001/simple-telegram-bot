@@ -150,8 +150,9 @@ public class QuestionCommand extends AbstractCommand {
     }
 }
 ```
+Result of execution command above:
 
-![result of execution command above](/path)
+![result of execution command above](https://github.com/maximaa2001/simple-telegram-bot/blob/media/media1.png?raw=true)
 
 Handler of above question is below
 
@@ -172,7 +173,9 @@ public class CorrectQuestionCommand extends AbstractCommand {
 
 ```
 
-![result of execution command above](/path)
+Result of execution command above:
+
+![result of execution command above](https://github.com/maximaa2001/simple-telegram-bot/blob/media/media2.png?raw=true)
 
 In the next step you need to create a `org.telegram.telegrambots.meta.TelegramBotsApi`, register your bot and all
 your `com.maks.telegram.command.Command`
