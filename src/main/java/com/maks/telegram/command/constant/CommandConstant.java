@@ -23,5 +23,4 @@ public final class CommandConstant {
 
     public final static String GET_MY_CHAT_MEMBER = "GET_MY_CHAT_MEMBER";
 
-
 }
