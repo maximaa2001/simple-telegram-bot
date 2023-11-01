@@ -3,6 +3,10 @@
 This library use [Telegram Bot Java Library](https://github.com/rubenlagus/TelegramBots), you can find more information
 following the link.
 
+## See also
+You can use Spring Boot starter for this lib
+[Spring-boot-starter-telegram-bot](https://github.com/maximaa2001/spring-boot-starter-telegram-bot)
+
 ## Webhooks vs Long Polling
 
 Support only long pulling method at now
