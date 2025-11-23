@@ -33,10 +33,12 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
         this.commandFactory = commandFactory;
         this.paramsFactory = paramsFactory;
         List<BotCommand> menuCommands = createMenuCommands(commandFactory.getAllMenuCommands());
-        try {
-            execute(new SetMyCommands(menuCommands, new BotCommandScopeDefault(), null));
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+        if (menuCommands != null && !menuCommands.isEmpty()) {
+            try {
+                execute(new SetMyCommands(menuCommands, new BotCommandScopeDefault(), null));
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -51,13 +53,21 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
             if (command != null) {
                 log.debug("command {}", command.getClass());
                 UserResponse userResponse = command.execute(params);
-                if (userResponse.getDeleteMessage() != null) {
-                    sendMessage(() -> execute(userResponse.getDeleteMessage()));
-                }
                 switch (userResponse.getType()) {
                     case SEND_MESSAGE -> sendMessage(() -> execute(userResponse.getSendMessage()));
                     case EDIT_MESSAGE_TEXT -> sendMessage(() -> execute(userResponse.getEditMessageText()));
                     case SEND_PHOTO -> sendMessage(() -> execute(userResponse.getSendPhoto()));
+                    case SEND_VIDEO -> sendMessage(() -> execute(userResponse.getSendVideo()));
+                    case SEND_AUDIO -> sendMessage(() -> execute(userResponse.getSendAudio()));
+                    case SEND_STICKER -> sendMessage(() -> execute(userResponse.getSendSticker()));
+                    case SEND_VOICE -> sendMessage(() -> execute(userResponse.getSendVoice()));
+                    case SEND_ANIMATION -> sendMessage(() -> execute(userResponse.getSendAnimation()));
+                    case SEND_DOCUMENT -> sendMessage(() -> execute(userResponse.getSendDocument()));
+                    case SEND_VIDEO_NOTE -> sendMessage(() -> execute(userResponse.getSendVideoNote()));
+                    case SEND_CONTACT -> sendMessage(() -> execute(userResponse.getSendContact()));
+                    case SEND_DICE -> sendMessage(() -> execute(userResponse.getSendDice()));
+                    case SEND_POLL -> sendMessage(() -> execute(userResponse.getSendPoll()));
+                    case SEND_LOCATION -> sendMessage(() -> execute(userResponse.getSendLocation()));
                     case EDIT_MESSAGE_MEDIA -> sendMessage(() -> execute(userResponse.getEditMessageMedia()));
                     default -> log.warn("type {}", userResponse.getType());
                 }

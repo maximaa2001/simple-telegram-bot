@@ -6,7 +6,6 @@ import com.maks.telegram.command.response.user.UserResponse;
 
 public abstract class DynamicCommand extends AbstractCallbackMessageCommand {
     public static final String DELIMITER = "_";
-    public static final Integer MAX_BYTES_FOR_CALLBACK_BUTTON = 64;
 
 
     public DynamicCommand(String NAME) {
