@@ -2,7 +2,6 @@ package com.maks.telegram.command.response.command;
 
 import com.maks.telegram.command.ReturnInlineKeyboard;
 import com.maks.telegram.command.response.user.UserResponse;
-import com.maks.telegram.command.response.user.UserResponseType;
 import org.telegram.telegrambots.meta.api.methods.send.SendVideo;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 

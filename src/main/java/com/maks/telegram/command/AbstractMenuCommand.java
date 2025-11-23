@@ -1,6 +1,5 @@
 package com.maks.telegram.command;
 
-
 import com.maks.telegram.meta.Descriptionable;
 
 public abstract class AbstractMenuCommand extends AbstractCommand implements Descriptionable {
@@ -15,5 +14,4 @@ public abstract class AbstractMenuCommand extends AbstractCommand implements Des
     public String getDescription() {
         return DESCRIPTION;
     }
-
 }

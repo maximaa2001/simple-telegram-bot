@@ -9,7 +9,6 @@ public class ContactCommandParams extends MessageCommandParams {
         super(update);
     }
 
-
     @Override
     protected void initParams(Update update) {
         super.initParams(update);

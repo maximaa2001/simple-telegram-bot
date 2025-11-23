@@ -9,7 +9,8 @@ import com.maks.telegram.command.params.CommandParams;
 import com.maks.telegram.command.response.user.UserResponse;
 import com.maks.telegram.exception.UnknownParamsException;
 import com.maks.telegram.meta.Sender;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -20,11 +21,12 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.Collection;
 import java.util.List;
 
-@Slf4j
 public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
     private final String username;
     private final CommandFactory commandFactory;
     private final ParamsFactory paramsFactory;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public DefaultTelegramLongPollingBot(String username, String token, CommandFactory commandFactory,
                                          ParamsFactory paramsFactory) {
@@ -51,7 +53,7 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
                 command = commandFactory.getCommand(params.getInvokedCommand().split(DynamicCommand.DELIMITER)[0]);
             }
             if (command != null) {
-                log.debug("command {}", command.getClass());
+                logger.debug("command {}", command.getClass());
                 UserResponse userResponse = command.execute(params);
                 switch (userResponse.getType()) {
                     case SEND_MESSAGE -> sendMessage(() -> execute(userResponse.getSendMessage()));
@@ -69,14 +71,14 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
                     case SEND_POLL -> sendMessage(() -> execute(userResponse.getSendPoll()));
                     case SEND_LOCATION -> sendMessage(() -> execute(userResponse.getSendLocation()));
                     case EDIT_MESSAGE_MEDIA -> sendMessage(() -> execute(userResponse.getEditMessageMedia()));
-                    default -> log.warn("type {}", userResponse.getType());
+                    default -> logger.warn("type {}", userResponse.getType());
                 }
             } else {
-                log.warn("command {} is not exists", params.getInvokedCommand());
+                logger.warn("command {} is not exists", params.getInvokedCommand());
             }
 
         } catch (UnknownParamsException e) {
-            log.warn(e.getMessage());
+            logger.warn(e.getMessage());
         }
     }
 
@@ -84,7 +86,7 @@ public class DefaultTelegramLongPollingBot extends TelegramLongPollingBot {
         try {
             sender.send();
         } catch (TelegramApiException e) {
-            log.error("error to send message", e);
+            logger.error("error to send message", e);
             throw new RuntimeException(e);
         }
     }

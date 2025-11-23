@@ -1,6 +1,5 @@
 package com.maks.telegram.command.response.user;
 
-import lombok.Getter;
 import org.telegram.telegrambots.meta.api.methods.polls.SendPoll;
 import org.telegram.telegrambots.meta.api.methods.send.*;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageMedia;
@@ -8,7 +7,6 @@ import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageTe
 
 import static com.maks.telegram.command.response.user.UserResponseType.*;
 
-@Getter
 public class UserResponse {
     private SendMessage sendMessage;
     private EditMessageText editMessageText;
@@ -104,5 +102,69 @@ public class UserResponse {
 
     private UserResponse(UserResponseType type) {
         this.type = type;
+    }
+
+    public SendLocation getSendLocation() {
+        return sendLocation;
+    }
+
+    public SendPoll getSendPoll() {
+        return sendPoll;
+    }
+
+    public SendDice getSendDice() {
+        return sendDice;
+    }
+
+    public SendContact getSendContact() {
+        return sendContact;
+    }
+
+    public SendDocument getSendDocument() {
+        return sendDocument;
+    }
+
+    public SendAnimation getSendAnimation() {
+        return sendAnimation;
+    }
+
+    public SendVoice getSendVoice() {
+        return sendVoice;
+    }
+
+    public SendSticker getSendSticker() {
+        return sendSticker;
+    }
+
+    public SendAudio getSendAudio() {
+        return sendAudio;
+    }
+
+    public SendVideoNote getSendVideoNote() {
+        return sendVideoNote;
+    }
+
+    public SendVideo getSendVideo() {
+        return sendVideo;
+    }
+
+    public SendPhoto getSendPhoto() {
+        return sendPhoto;
+    }
+
+    public EditMessageText getEditMessageText() {
+        return editMessageText;
+    }
+
+    public SendMessage getSendMessage() {
+        return sendMessage;
+    }
+
+    public EditMessageMedia getEditMessageMedia() {
+        return editMessageMedia;
+    }
+
+    public UserResponseType getType() {
+        return type;
     }
 }

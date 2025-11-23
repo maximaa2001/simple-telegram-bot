@@ -22,5 +22,4 @@ public final class CommandConstant {
     public final static String EDIT_VIDEO = "EDIT_VIDEO";
 
     public final static String GET_MY_CHAT_MEMBER = "GET_MY_CHAT_MEMBER";
-
 }

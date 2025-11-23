@@ -1,7 +1,6 @@
 package com.maks.telegram.command.params;
 
 import com.maks.telegram.command.params.callback_query.CallbackQueryCommandParams;
-import lombok.Getter;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.HashMap;
@@ -44,11 +43,8 @@ public abstract class CommandParams {
     public static final String DATE = "DATE";
     public static final String INVITE_LINK = "INVITE_LINK";
 
-
     protected final Map<String, Object> params = new HashMap<>();
-    @Getter
     protected final String invokedCommand;
-    @Getter
     protected final Update update;
 
     public CommandParams(Update update) {
@@ -69,4 +65,12 @@ public abstract class CommandParams {
     protected abstract void initParams(Update update);
 
     protected abstract String getInvokedCommandName(Update update);
+
+    public String getInvokedCommand() {
+        return invokedCommand;
+    }
+
+    public Update getUpdate() {
+        return update;
+    }
 }

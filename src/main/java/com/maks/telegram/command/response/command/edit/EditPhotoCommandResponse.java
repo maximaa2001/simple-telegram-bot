@@ -2,7 +2,6 @@ package com.maks.telegram.command.response.command.edit;
 
 import com.maks.telegram.command.ReturnInlineKeyboard;
 import com.maks.telegram.command.response.user.UserResponse;
-import com.maks.telegram.util.StringUtils;
 import org.telegram.telegrambots.meta.api.objects.media.InputMedia;
 import org.telegram.telegrambots.meta.api.objects.media.InputMediaPhoto;
 
@@ -12,7 +11,6 @@ public class EditPhotoCommandResponse extends EditMediaCommandResponse {
     public EditPhotoCommandResponse(Long chatId, Integer messageId, String identifier, File file, String caption, ReturnInlineKeyboard returnInlineKeyboard) {
         super(chatId, messageId, identifier, file, caption, returnInlineKeyboard);
     }
-
 
     @Override
     public UserResponse generateUserResponse() {
@@ -29,7 +27,6 @@ public class EditPhotoCommandResponse extends EditMediaCommandResponse {
                 .caption(caption)
                 .build();
     }
-
 
     public static class EditPhotoCommandResponseBuilder {
         private final Long chatId;

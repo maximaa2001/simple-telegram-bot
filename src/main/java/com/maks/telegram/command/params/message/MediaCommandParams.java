@@ -14,5 +14,4 @@ public abstract class MediaCommandParams extends MessageCommandParams {
         Message message = update.getMessage();
         params.put(CAPTION, message.getCaption());
     }
-
 }

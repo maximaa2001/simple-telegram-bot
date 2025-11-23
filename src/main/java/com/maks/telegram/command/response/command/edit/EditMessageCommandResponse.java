@@ -2,7 +2,6 @@ package com.maks.telegram.command.response.command.edit;
 
 import com.maks.telegram.command.ReturnInlineKeyboard;
 import com.maks.telegram.command.response.user.UserResponse;
-import com.maks.telegram.command.response.user.UserResponseType;
 import com.maks.telegram.meta.CallbackNameValidator;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 

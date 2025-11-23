@@ -1,10 +1,5 @@
 package com.maks.telegram.meta;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum DiceType {
 
     DICE("\uD83C\uDFB2", 6),
@@ -19,5 +14,18 @@ public enum DiceType {
 
     public Integer getMinValue() {
         return 1;
+    }
+
+    DiceType(String emoji, Integer maxValue) {
+        this.emoji = emoji;
+        this.maxValue = maxValue;
+    }
+
+    public String getEmoji() {
+        return emoji;
+    }
+
+    public Integer getMaxValue() {
+        return maxValue;
     }
 }

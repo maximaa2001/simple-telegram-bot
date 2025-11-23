@@ -20,5 +20,4 @@ public class AnimationCommandParams extends MediaCommandParams {
     protected String getInvokedCommandName(Update update) {
         return CommandConstant.GET_ANIMATION;
     }
-
 }

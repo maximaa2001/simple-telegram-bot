@@ -1,6 +1,5 @@
 package com.maks.telegram.command;
 
-
 import com.maks.telegram.command.params.CommandParams;
 import com.maks.telegram.command.response.user.UserResponse;
 
@@ -22,5 +21,4 @@ public abstract class DynamicCommand extends AbstractCallbackMessageCommand {
         String dynamicData = commandParams.getInvokedCommand().split(DELIMITER)[1];
         commandParams.setDynamicData(dynamicData);
     }
-
 }
